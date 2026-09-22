@@ -41,6 +41,6 @@
     width: 100%;
 }
 
-.input_confrPass-err{
-    border: 1px solid red;
+.input_err{
+    border: 1px solid red !important;
 }

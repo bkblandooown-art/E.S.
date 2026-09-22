@@ -1,35 +1,67 @@
-const confirmaSenha = (senhaCadastro, confSenha) => senhaCadastro === confSenha;
+const validaEmail = (email) => { return email.endsWith(".com") || email.endsWith(".com.br")};
 
-const cadastro = () => {
+const validaSenhas = (senha, confirmaSenha) => senha === confirmaSenha;
+
+console.log(validaSenhas());
+
+
+const configCadastro = () => {
+
     const formCadastro = document.getElementById("formCad");
 
-    if (!formCadastro) return
-
-    formCadastro.addEventListener("submit", function (evento) {
-        evento.preventDefault();
-
-            const emailUser = document.getElementById("inputEmail").value;
-            const senhaCadastro = document.getElementById("inputPassword").value;
-            const confSenha = document.getElementById("inputConfirmaPassword").value;
-
-
-            if (!confirmaSenha(senhaCadastro, confSenha)) {
-                confSenha.addEventListener(){}('As senhas não coincidem');
-                return;
-            }
-            
-            const newUser = {
-                id: Date.now(),
-                email: emailUser,
-                senha: senhaCadastro,
-                status: 'Active'
-            };
-
-            console.log("cadastro realizado com sucesso do user:", emailUser)
-        
+    const email = document.getElementById("inputEmail");
+    const senha = document.getElementById("inputPassword");
+    const confirmaSenha = document.getElementById("inputConfirmaPassword");
+    
+    if (!formCadastro) return;
+    
+    email.addEventListener("input", (evento) => {
+        inputEmail.classList.remove("input_err");
+        return console.log("Estilo do Email resetado")
     });
+
+    confirmaSenha.addEventListener("input", (evento) => {
+        inputConfirmaPassword.classList.remove("input_err");
+        return console.log("Estilo da Senha resetada")
+    });
+
+    formCadastro.addEventListener("submit", (evento) => {
+        evento.preventDefault();
+        
+        //Capturar os dados do HTML/DOM
+        const emailValor = email.value;
+        const senhaValor = senha.value;
+        const confirmaSenhaValor = confirmaSenha.value;
+        
+        if (!validaEmail(emailValor)) {
+            inputEmail.classList.add("input_err");
+            console.log("O email não é valido");
+            return;
+        };
+
+        if (!validaSenhas(senhaValor, confirmaSenhaValor)) {
+            inputConfirmaPassword.classList.add("input_err");
+            console.log("senhas não coincidem");
+            return;
+        };
+
+        const saveEmail = (emailValor.toLowerCase())
+
+        const user = loadUser();
+
+        const newUser = {id: Date.now(), emailValor, senhaValor, status: "Ativo"};
+
+        user.push(newUser);
+
+        saveUser(user);
+
+        formCadastro.reset();
+
+        console.log(newUser);
+
+        alert("Cadastro realizado com sucesso.");
+    })
 
 };
 
-cadastro()
-
+configCadastro();
