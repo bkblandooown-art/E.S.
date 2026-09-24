@@ -15,6 +15,15 @@
     margin-bottom: 30px;
 }
 
+.inpt_nome {
+    width: 100%;
+    background-color: #efecf1;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
 .inpt_email {
     background-color: #efecf1;
     border: none;

@@ -2,25 +2,24 @@ const validaEmail = (email) => { return email.endsWith(".com") || email.endsWith
 
 const validaSenhas = (senha, confirmaSenha) => senha === confirmaSenha;
 
-console.log(validaSenhas());
-
 
 const configCadastro = () => {
 
     const formCadastro = document.getElementById("formCad");
 
+    const nome = document.getElementById("inputNome")
     const email = document.getElementById("inputEmail");
     const senha = document.getElementById("inputPassword");
     const confirmaSenha = document.getElementById("inputConfirmaPassword");
     
     if (!formCadastro) return;
     
-    email.addEventListener("input", (evento) => {
+    email.addEventListener("input", () => {
         inputEmail.classList.remove("input_err");
         return console.log("Estilo do Email resetado")
     });
 
-    confirmaSenha.addEventListener("input", (evento) => {
+    confirmaSenha.addEventListener("input", () => {
         inputConfirmaPassword.classList.remove("input_err");
         return console.log("Estilo da Senha resetada")
     });
@@ -29,6 +28,7 @@ const configCadastro = () => {
         evento.preventDefault();
         
         //Capturar os dados do HTML/DOM
+        const nomeValor = nome.value;
         const emailValor = email.value;
         const senhaValor = senha.value;
         const confirmaSenhaValor = confirmaSenha.value;
@@ -49,7 +49,7 @@ const configCadastro = () => {
 
         const user = loadUser();
 
-        const newUser = {id: Date.now(), emailValor, senhaValor, status: "Ativo"};
+        const newUser = {id: Date.now(), nomeValor, saveEmail, senhaValor, status: "Ativo"};
 
         user.push(newUser);
 

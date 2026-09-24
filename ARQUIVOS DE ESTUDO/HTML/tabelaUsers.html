@@ -24,36 +24,34 @@
         <!-- 1. Cabeçalho isolado semanticamente -->
         <thead class="table_thead">
           <tr class="tr_row">
+            <th class="td_cell" >Id</th>
             <th class="td_cell" >Nome do Usuário</th>
             <th class="td_cell" >E-mail de Contato</th>
+            <th class="td_cell" >Senha</th>
             <th class="td_cell" >Status</th>
             <th class="td_cell" >Ações</th>
           </tr>
         </thead>
 
         <!-- 2. Corpo principal contendo os dados gerados pela aplicação -->
-        <tbody class="table_tbody">
+        <tbody class="table_tbody" id="tbodyUsers">
           <tr class="tr_row">
-            <td class="td_cell">Ana Silva</td>
-            <td class="td_cell">ana.silva@email.com</td>
-            <td class="td_cell">Ativo</td>
-            <td class="td_button"><button class="button_table">delete</button></td>
-          </tr>
-          <tr class="tr_row">
-            <td class="td_cell" >Carlos Santos</td>
-            <td class="td_cell" >carlos.santos@email.com</td>
-            <td class="td_cell" >Inativo</td>
-            <td class="td_button" ><button class="button_table">delete</button></td>
+            <td class="td_cell" id="td_id">id</td>
+            <td class="td_cell" id="td_nome">nome</td>
+            <td class="td_cell" id="td_email">email</td>
+            <td class="td_cell" id="td_senha">senha</td>
+            <td class="td_cell" id="td_status">status</td>
+            <td class="td_button" ><button class="button_table" type="button" id="td_buttonDelete">delete</button></td>
           </tr>
         </tbody>
 
         <!-- 3. Rodapé reservado para resumos e totais -->
-        <tfoot>
+        <tfoot class="tfoot-total" id="footTotal">
           <tr class="tr_row">
             <!-- Mesclando 3 colunas para o texto descritivo -->
-            <th class="td_cell" colspan="3">Total de usuários cadastrados:</th>
+            <th class="td_cell" colspan="5">Total de usuários cadastrados:</th>
             <!-- A última coluna recebe o valor real -->
-            <td class="td_cell" >2</td>
+            <td class="td_total-user" id="totalUser"></td>
           </tr>
         </tfoot>
       </table>
@@ -63,6 +61,8 @@
       </div>
     </div>
   </section>
+  <script src="./JS/cadastroUser.js"></script>
+  <script src="./JS/dataBase.js"></script>
 </body>
 
 </html>
