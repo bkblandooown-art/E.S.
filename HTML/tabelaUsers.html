@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title> SPARKS </title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/form.css">
+  <link rel="stylesheet" href="./style/tabelaUser.css">
+
+</head>
+
+<body>
+
+  <section class="container_tableUser">
+    <div class="container_Tabela">
+      <h2 class="title_db">Banco de dados Ficticio</h2>
+      <table class="table_ext">
+        <!-- 1. Cabeçalho isolado semanticamente -->
+        <thead class="table_thead">
+          <tr class="tr_row">
+            <th class="td_cell" >Id</th>
+            <th class="td_cell" >Nome do Usuário</th>
+            <th class="td_cell" >E-mail de Contato</th>
+            <th class="td_cell" >Senha</th>
+            <th class="td_cell" >Status</th>
+            <th class="td_cell" >Ações</th>
+          </tr>
+        </thead>
+
+        <!-- 2. Corpo principal contendo os dados gerados pela aplicação -->
+        <tbody class="table_tbody" id="tbodyUsers">
+          <tr class="tr_row">
+            <td class="td_cell" id="td_id">id</td>
+            <td class="td_cell" id="td_nome">nome</td>
+            <td class="td_cell" id="td_email">email</td>
+            <td class="td_cell" id="td_senha">senha</td>
+            <td class="td_cell" id="td_status">status</td>
+            <td class="td_button" ><button class="button_table" type="button" id="td_buttonDelete">delete</button></td>
+          </tr>
+        </tbody>
+
+        <!-- 3. Rodapé reservado para resumos e totais -->
+        <tfoot class="tfoot-total" id="footTotal">
+          <tr class="tr_row">
+            <!-- Mesclando 3 colunas para o texto descritivo -->
+            <th class="td_cell" colspan="5">Total de usuários cadastrados:</th>
+            <!-- A última coluna recebe o valor real -->
+            <td class="td_total-user" id="totalUser"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div>
+        <button class="button_table"><a class="link_button" href="./SPARKS.html">voltar para tela inicial</a></button>
+      </div>
+    </div>
+  </section>
+  <script src="./JS/cadastroUser.js"></script>
+  <script src="./JS/dataBase.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+.container_loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-container);
+    background-color: var(--background-light);
+}
+
+.title_form p {
+    color: blueviolet;
+    font-family: 'poppins', sans-serif;
+    font-size: var(--fontSize-destaque);
+    font-weight: var(--fontWeigth-destaque);
+    margin-bottom: 30px;
+}
+
+.inpt_nome {
+    width: 100%;
+    background-color: #efecf1;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.inpt_email {
+    background-color: #efecf1;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.inpt_pass {
+    background-color: #efecf1;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+#btnSubmit {
+    width: 100%;
+    background-color: blueviolet;
+    color: var(--color-font);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+#btnSubmit:hover {
+    background-color: rgb(80, 23, 134);
+    cursor: pointer;
+}
+
+.CR_senha a {
+    text-decoration: none;
+    color: blueviolet;
+
+}

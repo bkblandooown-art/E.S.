@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<title> SPARKS </title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://gstatic.com" crossorigin>
+
+	<link rel="stylesheet" href="./style/style.css">
+	<link rel="stylesheet" href="./style/form.css">
+    <link rel="stylesheet" href="./style/cadastroUser.css">
+
+</head>
+
+<body>
+	<section class="container_cadastroUser">
+		<article class="container_CadForm">
+			<div class="title_form">
+				<p>Cadastro</p>
+			</div>
+			<div class="cadastro_container">
+				<form id="formCad" action="GET">
+					<div class="input_nome">
+						<input class="inpt_nome" id="inputNome" type="text" name="text" aria-label="área de digitação do nome"
+							placeholder="Digite seu nome" required>
+					</div>
+
+					<div class="input_email">
+						<input class="inpt_email" id="inputEmail" type="email" name="email" aria-label="área de digitação do email"
+							placeholder="Email" required>
+					</div>
+					<div class="input_senha">
+						<input class="inpt_pass" id="inputPassword" type="password" name="password"
+							aria-label="área de digitação da senha" placeholder="Senha" required>
+
+                        <input class="inpt_confrPass" id="inputConfirmaPassword" type="password" name="confirmaPassword"
+							aria-label="área de digitação de confirmarção da senha" placeholder="Confirmar Senha" required>    
+					</div>
+					<div class="input_btn">
+						<button id="btnSubmit" type="submit">Cadastrar</button>
+					</div>
+					<div class="CR_senha">
+						<a href="./SPARKS.html">Já possuo uma conta!</a>
+					</div>
+				</form>
+			</div>
+		</article>
+	</section>
+	<script src="./JS/dataBase.js"></script>
+    <script src="./JS/cadastroUser.js"></script>
+</body>
+
+</html>
