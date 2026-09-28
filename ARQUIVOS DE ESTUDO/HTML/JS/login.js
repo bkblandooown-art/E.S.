@@ -1,34 +1,43 @@
-const loadUser = () => {
-    const dados = localStorage.getItem("db_users");
-    if (!dados || dados === "undefined" || dados === "null") {
-        return [];
-    }
-    return JSON.parse(dados);
-};
-
 const validaUser = () => {
 
-    loadUser()
+    const loginForm = document.getElementById("loginForm");
 
-    const loginButton = document.getElementById("btnSubmit");
+    if (!loginForm) return;
 
-    loginButton.addEventListener("submit", (evento) => {
+    loginForm.addEventListener("submit", (evento) => {
+        evento.preventDefault()
 
-    const emailLogin = document.getElementById("inputEmail").value;
-    const senhaLogin = document.getElementById("inputPassword").value;
+        const usuario = loadUser();
 
-    const findLogin = loadUser.includes()
+        const emailLogin = document.getElementById("inputEmail").value;
+        const senhaLogin = document.getElementById("inputPassword").value;
 
+        const buscaDados = usuario.find((achaUser) => achaUser.saveEmail === emailLogin);
 
-    if (emailLogin === saveEmail && senhaLogin === senhaValor) {
+        if (!buscaDados) {
 
+            loginForm.reset();
 
+            alert("email não encontrado")
+
+            return;
+        };
+
+        if (buscaDados.senhaValor === senhaLogin) {
+
+            alert("login realizado")
+
+            window.location.href = "tabelaUsers.html";
+
+            return;
+        };
+
+        loginForm.reset();
+
+        alert("Dados incorreto");
         
-    };
-});
-
- 
-
+    });
 };
 
-validaUser()
+validaUser();
+

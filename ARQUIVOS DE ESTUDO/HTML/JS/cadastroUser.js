@@ -60,6 +60,8 @@ const configCadastro = () => {
         console.log(newUser);
 
         alert("Cadastro realizado com sucesso.");
+
+        window.location.href = "SPARKS.html";
     })
 
 };
