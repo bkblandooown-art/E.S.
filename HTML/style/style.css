@@ -8,6 +8,7 @@
 }
 
 :root {
+    --background-gradient:linear-gradient(90deg, rgba(44, 42, 155, 1) 0%, rgba(175, 83, 237, 1) 100%);
     --padding-body: 5px;
     --background-light: #fefefe;
     --logo-size: 200px;
