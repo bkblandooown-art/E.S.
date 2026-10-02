@@ -56,7 +56,7 @@ const rendeUser = () => {
 
                 rendeUser()
 
-                console.log("usuário deletado")
+                alert("usuário deletado")
             }
         });
     };
@@ -64,7 +64,6 @@ const rendeUser = () => {
     const totalFoot = document.getElementById("totalUser");
 
     totalFoot.innerText = usuario.length;
-
 };
 
 rendeUser()
