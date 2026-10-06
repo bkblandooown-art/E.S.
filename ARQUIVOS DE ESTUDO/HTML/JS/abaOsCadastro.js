@@ -1,3 +1,7 @@
+const criaOs = loadOs();
+const criaClient = loadClient();
+const criaVeiculo = loadVeiculo();
+
 const confgOS = () => {
     const formOS = document.getElementById("ClientForm");
 
@@ -62,7 +66,7 @@ const confgOS = () => {
         return `OS-${letra1}${letra2}${numero}`
     };
 
-        const idCliente = () => {
+    const idCliente = () => {
         const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVXWIZ"
 
         const letra1 = alfabeto.charAt(Math.floor(Math.random() * alfabeto.length));
@@ -95,22 +99,39 @@ const confgOS = () => {
         const placaValor = placaVeiculo.value;
         const defeitoValor = defeitoVeiculo.value;
 
-        const criaOs = loadOs();
-        const criaClient = loadClient();
-        const criaVeiculo = loadVeiculo();
-
+        const idUnicoOS = idOs();
         const idClientUnico = idCliente();
         const idVeiculoUnico = idVeiculo();
 
-        // tenho que adicionar o verificador de quem é o usuário da seção para capturar o meta dado de abertura.
+        const validaPlaca = criaVeiculo.some((placa) => placa.placaValor === placaValor);
 
-        const newOsForm = { id: idOs(), dataCriacao: dataDeCriacao(), status: "Aberto" };
+        console.log(validaPlaca)
 
-        const newClient = { id: idClientUnico, clientValor, cpfCnpjValor, contatoValor};
+        const checaCpf = criaClient.find((cpf) => cpf.cpfCnpjValor === cpfCnpjValor);
 
-        const newVeiculo = {id: idVeiculoUnico, idClientUnico, marcaValor, modelValor, placaValor, defeitoValor};
+        console.log(checaCpf)
+
+        if (validaPlaca) return alert("Veiculo com placa " + placaValor + " já existe");
+
+        const idUserCadastrado = checaCpf.id;
+
+        const newOsForm = { id: idUnicoOS, idClientUnico, idVeiculoUnico, dataCriacao: dataDeCriacao(), status: "Aberto" };
+
+        const newClient = { id: idClientUnico, clientValor, cpfCnpjValor, contatoValor, status: "Ativo" };
+
+        const newVeiculo = () => {
+
+            if (checaCpf) {
+
+                return { id: idVeiculoUnico, idUserCadastrado, marcaValor, modelValor, placaValor, defeitoValor }
+
+            } else {
+
+                return { id: idVeiculoUnico, idClientUnico, marcaValor, modelValor, placaValor, defeitoValor }
+            }
+        };
         // criar um novo DB para veículo e relacionar ele ao cliente atravez da placa ou ID
-        // Separar os dados de salvamento dentro da OS para que cada dado vá para um DB diferente
+        // Separar os dados de salvamento dentro da OS para que cada dado vá para um DB diferente        
 
         criaClient.push(newClient);
 
@@ -128,9 +149,12 @@ const confgOS = () => {
 
         alert("OS criada com sucesso");
 
-        console.log(newOsForm);
+        //window.location.reload();
 
-    })
-}
+        console.log(newOsForm);
+    }
+    )
+};
+
 
 confgOS();

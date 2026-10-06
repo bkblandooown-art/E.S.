@@ -19,10 +19,12 @@ body {
 .clienteHero_text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     color: blueviolet;
     padding: var(--padding-container);
+}
+
+.clienteHero_text h3 {
+    text-align: left;
 }
 
 .container_clienteForm {
@@ -87,7 +89,7 @@ body {
     width: 49%;
 }
 
-.input_placaVeiculo{
+.input_placaVeiculo {
     display: flex;
     flex-direction: column;
     padding-bottom: 10px;
@@ -155,10 +157,6 @@ body {
 
 .input_btn :hover {
     cursor: pointer;
-}
-
-.button_table {
-    width: 106px;
 }
 
 .divisor_form {
@@ -230,19 +228,153 @@ body {
 }
 
 .button_table {
+    width: 80px;
     background: linear-gradient(45deg, rgba(44, 42, 155, 1) 0%, rgba(175, 83, 237, 1) 100%);
     padding: 5px 20px;
     border-radius: 10px;
     border: 1px solid rgba(175, 83, 237, 1);
     color: var(--background-light);
-}
-
-.button_table{
-    margin-top: 2px;
-    border: 1px solid #e5d6ee ;
-    background-color: #2c2a9b;
-    color: var(--background-light);
-    padding: 5px 12px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+@media (max-width: 440px) {
+    .nav_menuCotainer {
+        height: 50px;
+    }
+
+    .menuSup_boasVindas{
+        display: flex;
+        align-items: center;
+    }
+
+    .clienteHero_text p {
+        font-size: 1.5rem;
+    }
+
+    .title_form {
+        font-size: 1.5rem;
+    }
+
+    .container_clienteForm{
+        box-sizing: border-box;
+    }
+
+    .FormClient_container {
+        width: 100%;
+        padding: 14px;
+    }
+    .input_placaVeiculo{
+        width: 100%;
+    }
+
+    #ClientForm {
+        flex-direction: column;
+        width: 100%;
+        border: 1px solid #e7e7e7;
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .input_container {
+        width: 100%;
+    }
+
+    .label_nome {
+        font-size: 1.2rem;
+    }
+
+    .label_CPF {
+        font-size: 1.2rem;
+    }
+
+    .label_tel {
+        font-size: 1.2rem;
+    }
+
+    .label_marca {
+        font-size: 1.2rem;
+    }
+
+    .label_placa {
+        font-size: 1.2rem;
+    }
+
+    .label_veiculo {
+        font-size: 1.2rem;
+    }
+
+    .label_defeito {
+        font-size: 1.2rem;
+    }
+
+    .inpt_nome {
+        font-size: 1.2rem;
+    }
+
+    .inpt_CPF {
+        font-size: 1.2rem;
+    }
+
+    .inpt_tel {
+        font-size: 1.2rem;
+    }
+
+    .inpt_marca {
+        font-size: 1.2rem;
+    }
+
+    .inpt_veiculo {
+        font-size: 1.2rem;
+    }
+
+    .inpt_placa {
+        font-size: 1.2rem;
+    }
+
+    .inpt_defeito {
+        font-size: 1.2rem;
+    }
+    #td_status{
+        justify-content: center;
+    }
+
+    .input_btn{
+    width: 100%;
+    padding: 0 20px;
+    }
+    .input_btn button{
+        width: 100%;
+        padding: 16px 50px;
+    }
+    .container_Tabela{
+        padding: 10px;
+    }
+    .table_thead{
+        font-size: 0.6rem;
+    }
+    .table_tbody{
+        font-size: 0.6rem;
+    }
+    .tr_rowHead{
+        grid-template-columns: 1.5fr 3fr 1fr 1fr 0fr;
+    }
+    .tr_row{
+        grid-template-columns: 1.5fr 3fr 1fr 1fr 0fr;
+        align-items: baseline;
+        column-gap: 5px;
+    }
+
+    #td_model{
+        display: none;
+    }
+    #cellModel{
+        display: none;
+    }
+    .button_table{
+    width: 40px;
+    font-size: 0.6rem;
+    padding: 5px 0px;
+    }
+
 }

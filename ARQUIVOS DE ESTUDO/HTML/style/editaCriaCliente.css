@@ -1,0 +1,132 @@
+.containerTitulo {
+    color: #444444;
+    margin-bottom: 10px;
+}
+
+.containerFormClient {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #edebed;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 0 2em;
+}
+
+.FormClient {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    align-items: flex-end;
+}
+
+.containerInput {
+    width: 49%;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.containerInputContato {
+    width: 49%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.containerInput_contato {
+    width: 100%;
+    align-items: flex-end;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.inputClient,
+.inputVeiculo {
+    width: 100%;
+    border: 1px solid #edebed;
+    border-radius: 7px;
+    padding: 5px 10px;
+    color: #444444;
+    font-size: 1rem;
+}
+
+.btnContato {
+    margin-left: 5px;
+    height: 30px;
+}
+
+.input_btn {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Campos para adicionar veículos */
+
+.containerFormVeiculo {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #edebed;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 2em;
+}
+
+.FormVeiculo {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: space-around;
+    align-items: flex-end;
+}
+
+.containerInputVeiculo {
+    width: 33%;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+/* Tabelas e Listas de Veículos */
+
+.listaVeiculosClient,
+.listaVeiculosClient_historico {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #edebed;
+    border-radius: 14px;
+    padding: 20px;
+    margin: 2em;
+}
+
+.veiculosClientDados {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rowThead {
+    display: grid;
+    grid-auto-flow: column;
+    width: 100%;
+    justify-content: space-between;
+    grid-template-columns: 2fr 2fr 2fr 2fr 1fr;
+    text-align: left;
+}
+
+.rowTbody {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    justify-items: start;
+    grid-template-columns: 2fr 2fr 2fr 2fr 1fr;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.button_table {
+    padding: 5px 10px;
+    cursor: pointer;
+}

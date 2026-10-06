@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARKS - Editar Cliente</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/clienteDados.css">
+    <link rel="stylesheet" href="./style/editaCriaCliente.css">
+</head>
+
+<body>
+    <section class="container_clienteCadastro">
+        <nav class="nav_menuCotainer">
+            <div class="menuSup_boasVindas">
+                <p>Seja Bem-vindo</p>
+            </div>
+        </nav>
+        <div class="clienteHero_text">
+            <h3>Editar Cliente</h3>
+        </div>
+        <section class="containerCliente">
+            <div class="containerFormClient">
+                <h3 class="containerTitulo">Dados do cliente</h3>
+                <form class="FormClient" id="clientForm">
+                    <div class="containerInput">
+                        <label for="inputNome">Nome Completo</label>
+                        <input class="inputClient" id="inputNome" name="nome" type="text"
+                            aria-label="área de digitação do nome" placeholder="Digite o nome">
+                    </div>
+
+                    <div class="containerInput">
+                        <label for="inputCpfCnpj">CPF/CNPJ</label>
+                        <input class="inputClient" id="inputCpfCnpj" name="identificacao" type="text"
+                            aria-label="área de digitação do CPF ou CNPJ">
+                    </div>
+
+                    <div class="containerInput">
+                        <label for="inputEmail">E-mail de contato</label>
+                        <input class="inputClient" id="inputEmail" name="email" type="email"
+                            aria-label="área de digitação do email">
+                    </div>
+
+                    <div class="containerInputContato">
+                        <div class="containerInput_contato">
+                            <label for="inputContato">WhatsApp/Telefone</label>
+                            <input class="inputClient" id="inputContato" name="tel" type="tel"
+                                aria-label="área de digitação do contato">
+                        </div>
+                        <input class="btnContato" id="btnAdicionarContato" type="button" value="Adicionar" name="adicionar">
+                    </div>
+
+                    <div class="containerInput">
+                        <label for="inputData">Data de Aniversário</label>
+                        <input class="inputClient" id="inputData" name="aniversario" type="date"
+                            aria-label="área de digitação do Aniversário">
+                    </div>
+
+                    <div class="input_btn">
+                        <button id="btnClientAtualizar" type="submit">Atualizar Dados</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="listaVeiculosClient">
+                <h3 class="containerTitulo">Veículos Ativos</h3>
+                <table class="veiculosClientDados">
+                    <thead class="thead_ClienteVeiculos">
+                        <tr class="rowThead">
+                            <th class="head_cellDados">ID Veículo</th>
+                            <th class="head_cellDados">Marca</th>
+                            <th class="head_cellDados">Modelo</th>
+                            <th class="head_cellDados">Placa</th>
+                            <th class="head_cellDados">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyVeiculosAtivos">
+                        <!-- Preenchido dinamicamente via JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="listaVeiculosClient_historico">
+                <h3 class="containerTitulo">Histórico de Veículos</h3>
+                <table class="veiculosClientDados">
+                    <thead class="thead_ClienteVeiculos">
+                        <tr class="rowThead">
+                            <th class="head_cellDados">ID Veículo</th>
+                            <th class="head_cellDados">Marca</th>
+                            <th class="head_cellDados">Modelo</th>
+                            <th class="head_cellDados">Placa</th>
+                            <th class="head_cellDados">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyVeiculosHistorico">
+                        <!-- Preenchido dinamicamente via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </section>
+    <script src="./JS/OsDataBase.js"></script>
+    <script src="./JS/veiculoDataBase.js"></script>
+    <script src="./JS/clienteDataBase.js"></script>
+    <script src="./JS/abaCliente.js"></script>
+</body>
+
+</html>

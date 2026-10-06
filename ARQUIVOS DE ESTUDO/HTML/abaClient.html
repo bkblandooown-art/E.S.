@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SPARKS - Aba de Clientes </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/clienteDados.css">
+    <link rel="stylesheet" href="./style/abaClientes.css">
+
+</head>
+
+<body>
+    <section class="container_clienteCadastro">
+        <nav class="nav_menuCotainer">
+            <div class="menuSup_boasVindas">
+                <p>Seja Bem-vindo</p>
+            </div>
+        </nav>
+        <div class="clienteHero_text">
+            <h3>Clientes</h3>
+            <div class="novoCliente">
+                <button class="btn_clienteNew">Novo Cliente</button>
+            </div>
+        </div>
+
+        <section class="lista_clients">
+            <div class="containerTabela-clientes">
+                <table class="tabelaClientes" id="clienteTable">
+                    <thead class="headTable">
+                        <tr class="rowThead">
+                            <td class="cellCliente-head" id="cellId">ID</td>
+                            <td class="cellCliente-head" id="cellNome">Nome</td>
+                            <td class="cellCliente-head" id="cellTell">WhatsApp</td>
+                            <td class="cellCliente-head" id="cellEmail">Email</td>
+                            <td class="cellCliente-head" id="cellVeiculo">Veiculos</td>
+                            <td class="cellCliente-head" id="cellStatus">Status</td>
+                            <td class="cellCliente-head" id="cellActions">Ações</td>
+                        </tr>
+                    </thead>
+
+                    <tbody class="bodyTable" id="TbodyClient">
+                        <tr class="rowTbody">
+                            <td class="cellCliente-body" id="cellBodyId">000000000</td>
+                            <td class="cellCliente-body" id="cellBodyNome">Meu Nome Completo</td>
+                            <td class="cellCliente-body" id="cellBodyWhatsapp">(62) 99536-3281</td>
+                            <td class="cellCliente-body" id="cellBodyEmail">meuemail@email.com</td>
+                            <td class="cellCliente-body" id="cellBodyVeiculos">02</td>
+                            <td class="cellCliente-body" id="cellBodyStatus">Ativo</td>
+                            <td class="btn_cell"><button class="button_table" type="button"
+                                    id="td_editarClient">Editar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+    </section>
+    <script src="./JS/OsDataBase.js"></script>
+    <script src="./JS/veiculoDataBase.js"></script>
+    <script src="./JS/clienteDataBase.js"></script>
+    <script src="./JS/abaCliente.js"></script>
+</body>
+
+</html>
