@@ -11,8 +11,8 @@ const listaCliente = () => {
 
     carregaCliente.forEach(clientesAba => {
 
-        const verificaVeiculo =  carregaVeiculo.filter((veiculoQtd) => clientesAba.id === veiculoQtd.idClientUnico)
-
+        const verificaVeiculo =  carregaVeiculo.filter((veiculoQtd) => clientesAba.id === veiculoQtd.idUserCadastrado)
+        console.log(verificaVeiculo)
         const novaListaClient = document.createElement("tr");
 
         novaListaClient.classList.add("rowTbody")

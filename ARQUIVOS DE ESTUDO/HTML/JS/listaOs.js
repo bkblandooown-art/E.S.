@@ -14,7 +14,11 @@ const renderOs = () => {
 
         const veiculoEncontrado = carregaVeiculo.find((veiculo) => OsDados.idVeiculoUnico === veiculo.id )
 
-        const clienteEncontrado = carregaCliente.find((cliente) => OsDados.idClientUnico === cliente.id );
+        console.log(veiculoEncontrado)
+
+        const clienteEncontrado = carregaCliente.find((cliente) => OsDados.idUserCadastrado === cliente.id );
+
+        console.log(clienteEncontrado)
 
         const novaLinha = document.createElement("tr");
 

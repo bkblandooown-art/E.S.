@@ -1,6 +1,6 @@
-const criaOs = loadOs();
-const criaClient = loadClient();
-const criaVeiculo = loadVeiculo();
+const carregaOs = loadOs();
+const carregaClient = loadClient();
+const carregaVeiculo = loadVeiculo();
 
 const confgOS = () => {
     const formOS = document.getElementById("ClientForm");
@@ -103,55 +103,43 @@ const confgOS = () => {
         const idClientUnico = idCliente();
         const idVeiculoUnico = idVeiculo();
 
-        const validaPlaca = criaVeiculo.some((placa) => placa.placaValor === placaValor);
+        const validaOs = carregaOs.some((osExiste) => osExiste.placaValor === placaValor);
+        const checaCpf = carregaClient.find((cpf) => cpf.cpfCnpjValor === cpfCnpjValor);
 
-        console.log(validaPlaca)
+        console.log(checaCpf);
 
-        const checaCpf = criaClient.find((cpf) => cpf.cpfCnpjValor === cpfCnpjValor);
+        if (validaOs) return alert("Já possui uma OS aberta para esse veiculo");
 
-        console.log(checaCpf)
+        let idUserCadastrado;
 
-        if (validaPlaca) return alert("Veiculo com placa " + placaValor + " já existe");
+        if (checaCpf) {
 
-        const idUserCadastrado = checaCpf.id;
+            idUserCadastrado = checaCpf.id;
 
-        const newOsForm = { id: idUnicoOS, idClientUnico, idVeiculoUnico, dataCriacao: dataDeCriacao(), status: "Aberto" };
+        } else {
 
-        const newClient = { id: idClientUnico, clientValor, cpfCnpjValor, contatoValor, status: "Ativo" };
+            idUserCadastrado = idClientUnico;
 
-        const newVeiculo = () => {
+            const newClient = { id: idUserCadastrado, clientValor, cpfCnpjValor, contatoValor, status: "Ativo" };
 
-            if (checaCpf) {
-
-                return { id: idVeiculoUnico, idUserCadastrado, marcaValor, modelValor, placaValor, defeitoValor }
-
-            } else {
-
-                return { id: idVeiculoUnico, idClientUnico, marcaValor, modelValor, placaValor, defeitoValor }
-            }
+            carregaClient.push(newClient);
         };
-        // criar um novo DB para veículo e relacionar ele ao cliente atravez da placa ou ID
-        // Separar os dados de salvamento dentro da OS para que cada dado vá para um DB diferente        
 
-        criaClient.push(newClient);
+        const newOsForm = { id: idUnicoOS, idUserCadastrado, idVeiculoUnico, placaValor, dataCriacao: dataDeCriacao(), status: "Aberto" };
+        const newVeiculo = { id: idVeiculoUnico, idUserCadastrado, marcaValor, modelValor, placaValor, defeitoValor };
+        
+        carregaOs.push(newOsForm);
+        carregaVeiculo.push(newVeiculo);
 
-        criaVeiculo.push(newVeiculo);
-
-        criaOs.push(newOsForm);
-
-        saveOs(criaOs);
-
-        saveVeiculo(criaVeiculo);
-
-        saveCliente(criaClient);
+        saveOs(carregaOs);
+        saveCliente(carregaClient);
+        saveVeiculo(carregaVeiculo);
 
         formOS.reset();
 
         alert("OS criada com sucesso");
 
         //window.location.reload();
-
-        console.log(newOsForm);
     }
     )
 };
