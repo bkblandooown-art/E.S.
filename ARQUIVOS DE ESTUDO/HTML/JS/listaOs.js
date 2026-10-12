@@ -12,11 +12,11 @@ const renderOs = () => {
 
     carregaOS.forEach(OsDados => {
 
-        const veiculoEncontrado = carregaVeiculo.find((veiculo) => OsDados.idVeiculoUnico === veiculo.id )
+        const veiculoEncontrado = carregaVeiculo.find((veiculo) => OsDados.idVeiculoUnico === veiculo.id)
 
         console.log(veiculoEncontrado)
 
-        const clienteEncontrado = carregaCliente.find((cliente) => OsDados.idUserCadastrado === cliente.id );
+        const clienteEncontrado = carregaCliente.find((cliente) => OsDados.idUserCadastrado === cliente.id);
 
         console.log(clienteEncontrado)
 

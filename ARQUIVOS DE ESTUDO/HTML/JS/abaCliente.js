@@ -12,7 +12,9 @@ const listaCliente = () => {
     carregaCliente.forEach(clientesAba => {
 
         const verificaVeiculo =  carregaVeiculo.filter((veiculoQtd) => clientesAba.id === veiculoQtd.idUserCadastrado)
+       
         console.log(verificaVeiculo)
+        
         const novaListaClient = document.createElement("tr");
 
         novaListaClient.classList.add("rowTbody")
@@ -34,7 +36,21 @@ const listaCliente = () => {
             novaListaClient.innerHTML =`<td class="cellCliente-body" id="cellBodyId">Clientes não encontrados ou sem dados.</td>`
         }
     });
+};
 
+const listClient = document.getElementById("clienteTable");
+
+ if (listClient) {
+
+    listClient.addEventListener('click', (evento) => {
+        if (evento.target.classList.contains("button_table")) {
+
+            const clientId = evento.target.getAttribute('data-id');
+
+            window.location.href = ("editaCliente.html?id=" + clientId)
+
+        }
+    });
 };
 
 listaCliente();
