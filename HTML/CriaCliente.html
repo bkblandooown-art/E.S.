@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARKS - Cadastrar Cliente</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/clienteDados.css">
+    <link rel="stylesheet" href="./style/editaCriaCliente.css">
+</head>
+
+<body>
+    <section class="container_clienteCadastro">
+        <nav class="nav_menuCotainer">
+            <div class="menuSup_boasVindas">
+                <p>Seja Bem-vindo</p>
+            </div>
+        </nav>
+        <div class="clienteHero_text">
+            <h3>Novo Cliente</h3>
+        </div>
+        <section class="containerCliente">
+            <div class="containerFormClient">
+                <h3 class="containerTitulo">Dados do cliente</h3>
+                <form class="FormClient" id="clientForm">
+                    <div class="containerInput">
+                        <label for="inputNome">Nome Completo</label>
+                        <input class="inputClient" id="inputNome" name="nome" type="text"
+                            aria-label="área de digitação do nome" placeholder="Digite o nome">
+                    </div>
+
+                    <div class="containerInput">
+                        <label for="inputCpfCnpj">CPF/CNPJ</label>
+                        <input class="inputClient" id="inputCpfCnpj" name="identificacao" type="text"
+                            aria-label="área de digitação do CPF ou CNPJ" placeholder="Apenas números ou formatado">
+                    </div>
+
+                    <div class="containerInput">
+                        <label for="inputEmail">E-mail de contato</label>
+                        <input class="inputClient" id="inputEmail" name="email" type="email"
+                            aria-label="área de digitação do email" placeholder="email@exemplo.com">
+                    </div>
+
+                    <div class="containerInputContato">
+                        <div class="containerInput_contato">
+                            <label for="inputContato">WhatsApp/Telefone</label>
+                            <input class="inputClient" id="inputContato" name="tel" type="tel"
+                                aria-label="área de digitação do contato" placeholder="(00) 00000-0000">
+                        </div>
+                        <input class="btnContato" id="btnAdicionarContato" type="button" value="Adicionar" name="adicionar">
+                    </div>
+
+                    <div class="containerInput">
+                        <label for="inputData">Data de Aniversário</label>
+                        <input class="inputClient" id="inputData" name="aniversario" type="date"
+                            aria-label="área de digitação do Aniversário">
+                    </div>
+                </form>
+            </div>
+
+            <div class="containerFormVeiculo">
+                <h3 class="containerTitulo">Dados do Veículo</h3>
+                <form class="FormVeiculo" id="veiculoForm">
+                    <div class="containerInputVeiculo">
+                        <label for="inputMarca">Marca</label>
+                        <input class="inputVeiculo" id="inputMarca" name="marca" type="text"
+                            aria-label="área de digitação da marca" placeholder="Ex: Honda">
+                    </div>
+
+                    <div class="containerInputVeiculo">
+                        <label for="inputModelo">Modelo</label>
+                        <input class="inputVeiculo" id="inputModelo" name="modelo" type="text"
+                            aria-label="área de digitação do modelo do veículo" placeholder="Ex: CG 160 Titan">
+                    </div>
+
+                    <div class="containerInputVeiculo">
+                        <label for="inputPlaca">Placa</label>
+                        <input class="inputVeiculo" id="inputPlaca" name="placa" type="text"
+                            aria-label="área de digitação da placa" placeholder="ABC-1234">
+                    </div>
+                    <div class="input_btn">
+                        <button id="btnVeiculoAdiciona" type="submit">Adicionar Moto</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="listaVeiculosClient">
+                <h3 class="containerTitulo">Veículos Vinculados</h3>
+                <table class="veiculosClientDados">
+                    <thead class="thead_ClienteVeiculos">
+                        <tr class="rowThead">
+                            <th class="head_cellDados">ID Veículo</th>
+                            <th class="head_cellDados">Marca</th>
+                            <th class="head_cellDados">Modelo</th>
+                            <th class="head_cellDados">Placa</th>
+                            <th class="head_cellDados">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyVeiculos">
+                        <!-- Linhas renderizadas dinamicamente pelo JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="input_btn">
+                <button id="btnClientCancelar" type="button">Cancelar</button>
+                <button id="btnClientSalvar" type="submit" form="clientForm">Cadastrar Cliente</button>
+            </div>
+        </section>
+    </section>
+    <script src="./JS/OsDataBase.js"></script>
+    <script src="./JS/veiculoDataBase.js"></script>
+    <script src="./JS/clienteDataBase.js"></script>
+    <script src="./JS/abaCliente.js"></script>
+</body>
+
+</html>

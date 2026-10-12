@@ -1,0 +1,54 @@
+.clienteHero_text {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btn_clienteNew{
+    width: 120px;
+    background: linear-gradient(45deg, rgba(44, 42, 155, 1) 0%, rgba(175, 83, 237, 1) 100%);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(175, 83, 237, 1);
+    color: var(--background-light);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.lista_clients {
+    border: 1px solid #eceaee;
+    margin: 0 20px;
+    border-radius: 14px;
+}
+
+.containerTabela-clientes {
+    padding: var(--padding-container);
+}
+
+.tabelaClientes {
+    width: 100%;
+}
+
+.rowThead {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 3fr 5fr 3fr 2fr 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    width: 100%;
+}
+
+.rowTbody {
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: 3fr 5fr 3fr 2fr 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 2px;
+    padding-top: 2px;
+    border-top: 1px solid #ede9f0;
+}
+
+.button_table{
+    width: 60px;
+    padding: 7px 0;
+}
