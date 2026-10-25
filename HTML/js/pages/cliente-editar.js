@@ -5,9 +5,14 @@ const urlPar = new URLSearchParams(urlAtual);
 const idClientUrl = urlPar.get("id");
 
 const carregaCliente = loadClient();
+const listaVeiculosGlobal = loadVeiculo();
+
+console.log("LocalStorage", listaVeiculosGlobal);
 
 /* CAPTURA DO OBJETO DO CLIENTE E VALIDAÇÃO DE O ID EXISTE */
 const verificaUrl = carregaCliente.find((idClient) => idClient.id === idClientUrl)
+
+let copiaBaseVeiculo = listaVeiculosGlobal.filter(v => v.idUserCadastrado === verificaUrl.id);
 
 const btnCancel = document.getElementById("btnClientCancel");
 
@@ -79,6 +84,13 @@ const editaCliente = () => {
             } return clienteEditado;
         });
 
+        const carregaVeiculo = loadVeiculo();
+
+        const atualizaVeiculos = carregaVeiculo.filter( veiculo => veiculo.idUserCadastrado !== verificaUrl.id );
+
+        const baseAtualizada = [...atualizaVeiculos, ...copiaBaseVeiculo]
+
+        saveVeiculo(baseAtualizada)
         saveCliente(dadosClientAtualizado);
         alert("Cliente atualizado com sucesso!");
         window.location.href = "cliente.html";
@@ -86,20 +98,40 @@ const editaCliente = () => {
 
 };
 
+const modelInput = document.getElementById("inputModelo");
+const marcaInput = document.getElementById("inputMarca");
+const placaInput = document.getElementById("inputPlaca");
+
+if (modelInput) {
+    modelInput.addEventListener("input", (e) => {
+        e.target.value = formatInput(e.target.value);
+    });
+};
+
+if (marcaInput) {
+    marcaInput.addEventListener("input", (e) => {
+        e.target.value = formatInput(e.target.value);
+    });
+};
+
+if (placaInput) {
+    placaInput.addEventListener("input", (e) => {
+        e.target.value = maskPlaca(e.target.value);
+    });
+};
+
 /* --->>> TABELA DE VEICULOS ATIVOS <<<--- */
 
+/* Acha a tabela de veículos ativos */
+const tableVeiculosAtivos = document.getElementById("tbodyVeiculosAtivos")
+
 const veiculoTable = () => {
-
-    const carregaVeiculo = loadVeiculo();
-
-    /* Acha a tabela de veículos ativos */
-    const tableVeiculosAtivos = document.getElementById("tbodyVeiculosAtivos")
 
     if (!tableVeiculosAtivos) return;
 
     /* Filtra os veículos ativos no cliente */
 
-    const verificaVeiuclo = carregaVeiculo.filter((veiculoAtivo) => veiculoAtivo.idUserCadastrado === verificaUrl.id);
+    const verificaVeiuclo = copiaBaseVeiculo.filter((veiculoAtivo) => veiculoAtivo.idUserCadastrado === verificaUrl.id);
 
     if (!verificaUrl) {
         window.location.href = "clientes.html";
@@ -128,8 +160,6 @@ const veiculoTable = () => {
 
     verificaStatus.forEach((veiculo) => {
 
-        
-
         const listaAtivos = document.createElement("tr");
 
         listaAtivos.classList.add("rowTbody");
@@ -148,16 +178,14 @@ const veiculoTable = () => {
 
 };
 
-const tableVeiculosAtivos = document.getElementById("veiculosAtivos");
-
-if (!tableVeiculosAtivos) {
+if (tableVeiculosAtivos) {
     tableVeiculosAtivos.addEventListener("click", (evento) => {
 
         if (evento.target.classList.contains("button_table")) {
 
             const btnDesativa = evento.target.getAttribute("data-id");
 
-            let desativaVeiculo = loadVeiculo();
+            let desativaVeiculo = copiaBaseVeiculo;
 
             desativaVeiculo = desativaVeiculo.map(desativado => {
                 if (desativado.id === btnDesativa) {
@@ -166,19 +194,52 @@ if (!tableVeiculosAtivos) {
                 return desativado;
             })
 
-            saveVeiculo(desativaVeiculo);
             historicoVeiculo()
             veiculoTable()
-            alert("Veiculo deletado com sucesso");
+            alert("Veiculo desativado");
         };
 
     });
 };
+
+/* --->>> FORM ADICIONAR NOVO VEÍCULO <<<--- */
+
+const adicionaVeiculo = () => {
+
+    const formAddVeiculo = document.getElementById("veiculoForm");
+
+    if (!formAddVeiculo) return;
+
+    formAddVeiculo.addEventListener(("submit"), evento => {
+        evento.preventDefault();
+
+        const novoVeiculo = Object.fromEntries(new FormData(evento.target));
+
+        const validaPlaca = copiaBaseVeiculo.some(p => p.placaValor === novoVeiculo.placaValor);
+
+        if (validaPlaca) return alert("Veiculo já está cadastrado");
+
+        const newVeiculo = {
+            id: idVeiculo(),
+            idUserCadastrado: verificaUrl.id,
+            marcaValor: novoVeiculo.marcaValor,
+            modelValor: novoVeiculo.modelValor,
+            placaValor: novoVeiculo.placaValor,
+            defeitoValor: "none",
+            status: "Ativo"
+        };
+
+        copiaBaseVeiculo.push(newVeiculo);
+
+        formAddVeiculo.reset();
+        veiculoTable()
+    });
+
+};
+
 /* --->>> TABELA DE VEICULOS DESATIVADOS <<<--- */
 
 const historicoVeiculo = () => {
-
-    const carregaVeiculo = loadVeiculo();
 
     const tableDesativado = document.getElementById("veiculosDesativados");
     const tbodyVeiculosDesativados = document.getElementById("tbodyVeiculosHistorico");
@@ -187,9 +248,7 @@ const historicoVeiculo = () => {
 
     /* verifica se possui veiculos com status = desativado */
 
-    const veiculoInativo = carregaVeiculo.filter((desaivadoVeiculo) => desaivadoVeiculo.idUserCadastrado === verificaUrl.id && desaivadoVeiculo.status === "Desativado");
-
-    console.log(veiculoInativo)
+    const veiculoInativo = copiaBaseVeiculo.filter((desaivadoVeiculo) => desaivadoVeiculo.idUserCadastrado === verificaUrl.id && desaivadoVeiculo.status === "Desativado");
 
     /* se não tiver então retrona a mensagem: Não foram encontrados veículos desativados */
 
@@ -227,6 +286,7 @@ const historicoVeiculo = () => {
     })
 };
 
+console.log("Temporario", copiaBaseVeiculo);
 
 btnCancel.addEventListener(("click"), evento => {
     if (evento.target.dispatchEvent) {
@@ -234,6 +294,7 @@ btnCancel.addEventListener(("click"), evento => {
     };
 });
 
+adicionaVeiculo();
 historicoVeiculo();
 veiculoTable();
 editaCliente();
