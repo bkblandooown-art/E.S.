@@ -12,11 +12,8 @@ const renderOs = () => {
 
     carregaOS.forEach(OsDados => {
 
-        const veiculoEncontrado = carregaVeiculo.find((veiculo) => OsDados.idVeiculoUnico === veiculo.id)
+        const veiculoEncontrado = carregaVeiculo.find((veiculo) => OsDados.veiculoCadastradoPlaca === veiculo.id)
         const clienteEncontrado = carregaCliente.find((cliente) => OsDados.idUserCadastrado === cliente.id);
-
-        console.log(veiculoEncontrado)
-        console.log(clienteEncontrado)
 
         const novaLinha = document.createElement("tr");
 
