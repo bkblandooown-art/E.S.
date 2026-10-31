@@ -47,7 +47,7 @@ const confgOS = () => {
             nomeClient.readOnly = true;
             contatoClient.value = checaCpf.contatoValor;
             contatoClient.readOnly = true;
-            clienteAtivo = checaCpf;
+            clienteAtivo = checaCpf.id;
             console.log(clienteAtivo)
 
         } else {
@@ -58,11 +58,13 @@ const confgOS = () => {
 
     placaVeiculo.addEventListener("blur", (e) => {
 
+        console.log(clienteAtivo)
+
         const placaDigitada = e.target.value.trim();
 
         if (!placaDigitada) return;
 
-        if (!clienteAtivo) {
+        if (clienteAtivo === "") {
             alert("Necessario preencher CPF/CNPJ");
             e.target.value = "";
             return;

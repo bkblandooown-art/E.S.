@@ -10,6 +10,12 @@ const maskDocument = (valor) => {
         return limpo;
     };
 
+const maskEmail = (valor) => {
+    let limpo = String(valor).toLowerCase;
+
+    return limpo
+};
+
 const maskContato = (valor) => {
     let limpo = String(valor).replace(/\D/g, '');
 

@@ -29,15 +29,15 @@
                 <h3 class="containerTitulo">Dados do cliente</h3>
                 <form class="FormClient" id="clientForm">
                     <div class="containerInput">
-                        <label for="inputNome">Nome Completo</label>
-                        <input class="inputClient" id="inputNome" name="clientValor" type="text"
-                            aria-label="área de digitação do nome" placeholder="Digite o nome">
+                        <label for="inputCpfCnpj">CPF/CNPJ</label>
+                        <input class="inputClient" id="inputCpfCnpj" required name="cpfCnpjValor" type="text"
+                            aria-label="área de digitação do CPF ou CNPJ" placeholder="000-000-000.00">
                     </div>
 
                     <div class="containerInput">
-                        <label for="inputCpfCnpj">CPF/CNPJ</label>
-                        <input class="inputClient" id="inputCpfCnpj" name="cpfCnpjValor" type="text"
-                            aria-label="área de digitação do CPF ou CNPJ" placeholder="Apenas números ou formatado">
+                        <label for="inputNome">Nome Completo</label>
+                        <input class="inputClient" id="inputNome" required name="clientValor" type="text"
+                            aria-label="área de digitação do nome" placeholder="Digite o nome">
                     </div>
 
                     <div class="containerInput">
@@ -49,7 +49,7 @@
                     <div class="containerInputContato">
                         <div class="containerInput_contato">
                             <label for="inputContato">WhatsApp/Telefone</label>
-                            <input class="inputClient" id="inputContato" name="contatoValor" type="tel"
+                            <input class="inputClient" id="inputContato" required name="contatoValor" type="tel"
                                 aria-label="área de digitação do contato" placeholder="(00) 00000-0000">
                         </div>
                     </div>
@@ -65,32 +65,33 @@
             <div class="containerFormVeiculo">
                 <h3 class="containerTitulo">Dados do Veículo</h3>
                 <form class="FormVeiculo" id="veiculoForm">
+
                     <div class="containerInputVeiculo">
                         <label for="inputMarca">Marca</label>
-                        <input class="inputVeiculo" id="inputMarca" name="marca" type="text"
+                        <input class="inputVeiculo" id="inputMarca" name="marcaValor" type="text"
                             aria-label="área de digitação da marca" placeholder="Ex: Honda">
                     </div>
 
                     <div class="containerInputVeiculo">
                         <label for="inputModelo">Modelo</label>
-                        <input class="inputVeiculo" id="inputModelo" name="modelo" type="text"
+                        <input class="inputVeiculo" id="inputModelo" name="modelValor" type="text"
                             aria-label="área de digitação do modelo do veículo" placeholder="Ex: CG 160 Titan">
                     </div>
 
                     <div class="containerInputVeiculo">
                         <label for="inputPlaca">Placa</label>
-                        <input class="inputVeiculo" id="inputPlaca" name="placa" type="text"
+                        <input class="inputVeiculo" id="inputPlaca" name="placaValor" type="text"
                             aria-label="área de digitação da placa" placeholder="ABC-1234">
                     </div>
                     <div class="input_btn">
-                        <button id="btnVeiculoAdiciona" type="submit">Adicionar Moto</button>
+                        <button id="btnVeiculoAdiciona" type="submit" form="veiculoForm">Adicionar Moto</button>
                     </div>
                 </form>
             </div>
 
             <div class="listaVeiculosClient">
                 <h3 class="containerTitulo">Veículos Vinculados</h3>
-                <table class="veiculosClientDados">
+                <table class="veiculosClientDados" id="tableVeiculos" >
                     <thead class="thead_ClienteVeiculos">
                         <tr class="rowThead">
                             <th class="head_cellDados">ID Veículo</th>
@@ -113,6 +114,7 @@
         </section>
     </section>
     <script src="../js/utilits/masks.js"></script>
+    <script src="../js/utilits/generators.js"></script>
     <script src="../js/services/os-database.js"></script>
     <script src="../js/services/veiculo-database.js"></script>
     <script src="../js/services/cliente-database.js"></script>

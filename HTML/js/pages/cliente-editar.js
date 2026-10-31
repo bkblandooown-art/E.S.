@@ -88,6 +88,7 @@ const editaCliente = () => {
 
         const atualizaVeiculos = carregaVeiculo.filter( veiculo => veiculo.idUserCadastrado !== verificaUrl.id );
 
+        // ATUALIZA BASE DE CLIENTES E VEICULOS QUANDO APERTA O BOTÃO "ATUALIZAR DADOS"
         const baseAtualizada = [...atualizaVeiculos, ...copiaBaseVeiculo]
 
         saveVeiculo(baseAtualizada)
@@ -177,30 +178,30 @@ const veiculoTable = () => {
     });
 
 };
-
-if (tableVeiculosAtivos) {
-    tableVeiculosAtivos.addEventListener("click", (evento) => {
-
+// vvvv INICIO DESATIVA VEÍCULO VVV
+tableVeiculosAtivos.addEventListener("click", (evento) => {
         if (evento.target.classList.contains("button_table")) {
 
-            const btnDesativa = evento.target.getAttribute("data-id");
+            const btnDesativar = evento.target.getAttribute("data-id");
 
-            let desativaVeiculo = copiaBaseVeiculo;
+            let baseVeiculos = copiaBaseVeiculo;
 
-            desativaVeiculo = desativaVeiculo.map(desativado => {
-                if (desativado.id === btnDesativa) {
-                    return { ...desativado, status: "Desativado" };
-                };
-                return desativado;
-            })
+            const veiculosDesativados = baseVeiculos.map(d => {
+                
+                if (d.id === btnDesativar) {
+                    return {...d, status: "Desativado"}
+                }
+                return d;
+            });
+
+            copiaBaseVeiculo = veiculosDesativados;
 
             historicoVeiculo()
             veiculoTable()
             alert("Veiculo desativado");
         };
-
     });
-};
+//  ^^^ FIM DESATIVA VEÍCULO ^^^
 
 /* --->>> FORM ADICIONAR NOVO VEÍCULO <<<--- */
 
@@ -225,7 +226,6 @@ const adicionaVeiculo = () => {
             marcaValor: novoVeiculo.marcaValor,
             modelValor: novoVeiculo.modelValor,
             placaValor: novoVeiculo.placaValor,
-            defeitoValor: "none",
             status: "Ativo"
         };
 
@@ -260,16 +260,16 @@ const historicoVeiculo = () => {
             `<td colspan="7" style="padding-top: 10px; border-top: 1px solid #ede9f0; display: flex; justify-content: center;">Nenhum veículo encontrado.</td>
         `;
 
-        tableDesativado.appendChild(veiculoVazio);
+        tbodyVeiculosDesativados.appendChild(veiculoVazio);
 
         return;
     }
 
     /* passa por cada veiculo na lista de desativado e monta a tabela */
 
-    veiculoInativo.forEach((desativado) => {
+    tbodyVeiculosDesativados.innerHTML = ""
 
-        tbodyVeiculosDesativados.innerHTML = ""
+    veiculoInativo.forEach((desativado) => {
 
         const listaVeiculoDesativado = document.createElement("tr")
 
@@ -282,7 +282,7 @@ const historicoVeiculo = () => {
             <td class="cellCliente-body">${desativado.placaValor}</td>
             <td class="cellCliente-body">${desativado.status}</td>`;
 
-        tableDesativado.appendChild(listaVeiculoDesativado);
+        tbodyVeiculosDesativados.appendChild(listaVeiculoDesativado);
     })
 };
 
