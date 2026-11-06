@@ -1,3 +1,8 @@
+.container_clienteCadastro{
+    padding-top: 35px;
+    padding-left: 200px;
+}
+
 .clienteHero_text {
     flex-direction: row;
     justify-content: space-between;

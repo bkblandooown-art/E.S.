@@ -18,6 +18,16 @@
     --fontWeigth-destaque: 700;
 }
 
+.nav_menuCotainer {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    background: var(--background-gradient);
+    height: 35px;
+    padding: 10px 40px;
+}
+
 @media (min-width: 1440px) {
     :root {
         --padding-body: 10px;
@@ -32,6 +42,8 @@ body {
     font-family: 'poppins', sans-serif;
     background: var(--background-light);
 }
+
+
 
 
 .container_loginPage {

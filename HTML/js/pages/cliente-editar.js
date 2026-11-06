@@ -1,3 +1,14 @@
+const menuLateral = () => {
+    const capturaAtual = window.location.pathname;
+
+    const nomePage = capturaAtual.includes("/cliente/")
+
+    const pagina = "cliente"
+
+    renderSideMenu(nomePage, pagina)
+};
+
+
 /* CAPTURA DO ID DO URL */
 const urlAtual = window.location.search;
 const urlPar = new URLSearchParams(urlAtual);
@@ -294,6 +305,7 @@ btnCancel.addEventListener(("click"), evento => {
     };
 });
 
+menuLateral()
 adicionaVeiculo();
 historicoVeiculo();
 veiculoTable();

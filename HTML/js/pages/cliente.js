@@ -1,6 +1,18 @@
 const carregaCliente = loadClient();
 const carregaVeiculo = loadVeiculo();
 
+const menuLateral = () => {
+    const capturaAtual = window.location.pathname;
+
+    const nomePage = capturaAtual.includes("/cliente/")
+
+    const pagina = "cliente"
+
+    console.log(nomePage)
+
+    renderSideMenu(nomePage, pagina)
+};
+
 const listaCliente = () => {
 
     const tableClient = document.getElementById("TbodyClient");
@@ -65,9 +77,10 @@ if (listClient) {
 const btnNovo = document.getElementById("btnNovoCliente");
 
 if (btnNovo) {
-    btnNovo.addEventListener("click", (evento) => {
+    btnNovo.addEventListener("click", () => {
         window.location.href = "cliente-criar-novo.html";
     });
 };
 
+menuLateral();
 listaCliente();

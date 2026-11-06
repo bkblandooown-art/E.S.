@@ -3,13 +3,6 @@ body {
     font-family: 'Helvetica Neue', sans-serif !important;
 }
 
-.nav_menuCotainer {
-    display: flex;
-    background: var(--background-gradient);
-    height: 35px;
-    padding: 10px 40px;
-}
-
 .menuSup_boasVindas p {
     color: aliceblue;
     font-family: 'Helvetica Neue', sans-serif;
@@ -28,6 +21,8 @@ body {
 }
 
 .container_clienteForm {
+    padding-top: 35px;
+    padding-left: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -165,8 +160,9 @@ body {
 }
 
 .art_os {
+
     display: flex;
-    padding: 10px 10px;
+    padding: 10px 10px 10px 220px;
     flex-direction: column;
     align-items: center;
 }

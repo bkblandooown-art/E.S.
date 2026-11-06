@@ -1,0 +1,103 @@
+const renderSideMenu = (urlLocation, referencia) => {
+
+    const insertCss = document.createElement("link")
+    insertCss.rel = "stylesheet"
+    insertCss.href = "file:///C:/Users/LOGAN/Downloads/ARQUIVOS%20DE%20ESTUDO/HTML/css/sidebar.css"
+
+    document.head.appendChild(insertCss);
+
+    const corpoHtml = document.getElementById("asideBar")
+
+    corpoHtml.innerHTML = `<aside class="sidebar" id="appSidebar">
+        <!-- Cabeçalho / Logo -->
+        <div class="sidebar-header">
+            <h2 class="sidebar-logo">SPARKS</h2>
+        </div>
+
+        <!-- Navegação Principal -->
+        <nav class="sidebar-nav" id="navLateral">
+            <ul class="sidebar-menu" id="sidebarMenu">
+                <!-- Item: Dashboard / Início -->
+                <li class="sidebar-item" id="containerMenu" data-id="dashboard">
+                    <a href="file:///C:/Users/LOGAN/Downloads/ARQUIVOS%20DE%20ESTUDO/HTML/pages/tabela-users.html"
+                        class="sidebar-link" data-rota="dashboard">
+                        <svg class="side-icone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px"
+                            width="24px" fill="#efecf1">
+                            <path
+                                d="M13,9V3h8V9H13ZM3,13V3h8V13H3Zm10,8V11h8V21H13ZM3,21V15h8v6H3ZM5,11H9V5H5v6Zm10,8h4V13H15v6ZM15,7h4V5H15V7ZM5,19H9V17H5v2Zm4-8Zm6-4Zm0,6ZM9,17Z" />
+                        </svg>
+                        <span class="sidebar-text">Painel</span>
+                    </a>
+                </li>
+
+                <!-- Item: Clientes -->
+                <li class="sidebar-item" id="containerMenu" data-id="cliente">
+                    <a href="file:///C:/Users/LOGAN/Downloads/ARQUIVOS%20DE%20ESTUDO/HTML/pages/cliente/index.html"
+                        class="sidebar-link" data-rota="cliente">
+                        <svg class="side-icone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px"
+                            width="24px" fill="#efecf1">
+                            <path
+                                d="M13.88,13.13Q13,12.25 13,11t0.88-2.13T16,8t2.13,0.88T19,11t-0.88,2.13T16,14t-2.13-0.88ZM10,20V18.1q0-0.53 0.25-1t0.7-0.75q1.13-0.68 2.39-1.01T16,15t2.66,0.34t2.39,1.01q0.45,0.27 0.7,0.75t0.25,1V20H10Zm2.15-2h7.7Q18.98,17.5 18,17.25Q17.03,17 16,17q-1.02,0-2,0.25Q13.03,17.5 12.15,18Zm4.56-6.29Q17,11.43 17,11t-0.29-0.71T16,10t-0.71,0.29T15,11t0.29,0.71T16,12q0.43,0 0.71-0.29ZM16,11Zm0,7ZM3,14V12h8v2H3ZM3,6V4H15V6H3Zm8.1,4H3V8h9q-0.35,0.42-0.56,0.92T11.1,10Z" />
+                        </svg>
+                        <span class="sidebar-text">cliente</span>
+                    </a>
+                </li>
+
+                <!-- Item: Ordens de Serviço -->
+                <li class="sidebar-item" id="containerMenu" data-id="os">
+                    <a href="file:///C:/Users/LOGAN/Downloads/ARQUIVOS%20DE%20ESTUDO/HTML/pages/os-cadastro.html"
+                        class="sidebar-link" data-rota="os">
+                        <svg class="side-icone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px"
+                            width="24px" fill="#efecf1">
+                            <path
+                                d="M14,22V18.93l5.53-5.5q0.22-0.22 0.5-0.32T20.58,13q0.3,0 0.57,0.11q0.27,0.11 0.5,0.34l0.93,0.93q0.2,0.22 0.31,0.5T23,15.43t-0.1,0.56T22.58,16.5L17.08,22H14Zm7.5-6.58L20.58,14.5l0.92,0.92Zm-6,5.08h0.95l3.03-3.05l-0.45-0.47l-0.48-0.45L15.5,19.55V20.5ZM6,22q-0.82,0-1.41-0.59T4,20V4Q4,3.17 4.59,2.59T6,2h8l6,6v3H18V9H13V4H6V20h6v2H6Zm7-10Zm6.03,4.98l-0.48-0.45l0.93,0.93l-0.45-0.47Z" />
+                        </svg>
+                        <span class="sidebar-text">Ordens de Serviço</span>
+                    </a>
+                </li>
+
+                <!-- Item: Usuários / Configurações -->
+                <li class="sidebar-item" id="containerMenu" data-id="users">
+                    <a href="file:///C:/Users/LOGAN/Downloads/ARQUIVOS%20DE%20ESTUDO/HTML/pages/tabela-users.html"
+                        class="sidebar-link" data-rota="users">
+                        <svg class="side-icone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px"
+                            width="24px" fill="#efecf1">
+                            <path
+                                d="M9.18,10.83Q8,9.65 8,8T9.18,5.18T12,4t2.83,1.18T16,8t-1.17,2.82T12,12T9.18,10.83ZM4,20V17.2q0-0.85 0.44-1.56q0.44-0.71 1.16-1.09q1.55-0.78 3.15-1.16T12,13t3.25,0.39t3.15,1.16q0.72,0.38 1.16,1.09T20,17.2V20H4Zm2-2H18V17.2q0-0.27-0.14-0.5q-0.14-0.22-0.36-0.35q-1.35-0.68-2.72-1.01T12,15T9.23,15.34T6.5,16.35Q6.28,16.48 6.14,16.7Q6,16.93 6,17.2V18Zm7.41-8.59Q14,8.82 14,8T13.41,6.59T12,6T10.59,6.59Q10,7.18 10,8t0.59,1.41T12,10t1.41-0.59ZM12,8Zm0,10Z" />
+                        </svg>
+                        <span class="sidebar-text">Usuários</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Rodapé do Menu (Ex: Logout) -->
+        <div class="sidebar-footer">
+            <a href="file:///C:/Users/LOGAN/Downloads/ARQUIVOS%20DE%20ESTUDO/HTML/pages/index.html"
+                class="sidebar-link logout-link">
+                <span class="sidebar-text">Sair</span>
+            </a>
+        </div>
+    </aside>`;
+
+    const ativaBtn = () => {
+
+        const botao = document.querySelectorAll(".sidebar-item");
+        
+        botao.forEach(item => {
+
+            const atributiItem =  item.getAttribute("data-id");
+
+            if (urlLocation){
+                
+                const buscaLi = atributiItem.includes(referencia)
+
+                if (buscaLi) return item.classList.add("ativo")
+        }
+    });       
+    };
+
+    ativaBtn()
+
+};
+

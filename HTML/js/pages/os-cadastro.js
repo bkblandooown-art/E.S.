@@ -2,6 +2,16 @@ const carregaOs = loadOs();
 const carregaClient = loadClient();
 const carregaVeiculo = loadVeiculo();
 
+const menuLateral = () => {
+    const capturaAtual = window.location.pathname;
+
+    const nomePage = capturaAtual.includes("/os-cadastro")
+
+    const pagina = "os"
+
+    renderSideMenu(nomePage, pagina)
+};
+
 const confgOS = () => {
     const formOS = document.getElementById("ClientForm");
 
@@ -163,5 +173,5 @@ const confgOS = () => {
         window.location.reload();
     });
 };
-
+menuLateral();
 confgOS();

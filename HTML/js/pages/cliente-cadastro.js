@@ -11,6 +11,7 @@ const inptPlaca = document.getElementById("inputPlaca");
 
 let copiaDadosVeiculo = [];
 
+
 // inicio da formatação de campos vvv
 const formatacaoCampos = [
     { elemento: inptDocument, formatacao: maskDocument },
@@ -29,6 +30,16 @@ formatacaoCampos.forEach(({ elemento, formatacao }) => {
     });
 });
 // fim da formatação de campos ^^^
+
+const menuLateral = () => {
+    const capturaAtual = window.location.pathname;
+
+    const nomePage = capturaAtual.includes("/cliente/")
+
+    const pagina = "cliente"
+
+    renderSideMenu(nomePage, pagina)
+};
 
 // início da captura de dados do cliente vvv
 const criaCliente = () => {
@@ -201,8 +212,8 @@ const remove = () => {
         };
     });
 };
-
-remove()
+menuLateral();
+remove();
 criaVeiculo();
 tableVeiculos();
 criaCliente();
