@@ -11,6 +11,7 @@
     --background-gradient:linear-gradient(90deg, rgba(44, 42, 155, 1) 0%, rgba(175, 83, 237, 1) 100%);
     --padding-body: 5px;
     --background-light: #fefefe;
+    --background-body-light: #e5e7eb;
     --logo-size: 200px;
     --padding-container: 20px;
     --color-font: #FEFEFE;
@@ -21,6 +22,7 @@
 .nav_menuCotainer {
     position: fixed;
     z-index: 10;
+    top: 0px;
     width: 100%;
     display: flex;
     background: var(--background-gradient);
@@ -40,11 +42,17 @@ html {
 
 body {
     font-family: 'poppins', sans-serif;
-    background: var(--background-light);
+    background: var(--background-body-light);
+    padding-right: 10px;
+    padding-top: 45px;
 }
 
 
-
+/*CSS icones padrão*/
+.info{
+    color: #009fff;
+    cursor: pointer;
+}
 
 .container_loginPage {
     display: grid;

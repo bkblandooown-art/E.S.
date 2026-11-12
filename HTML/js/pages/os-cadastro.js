@@ -81,8 +81,11 @@ const confgOS = () => {
         }
 
         const checaVeiculo = carregaVeiculo.find((v) => v.placaValor === placaDigitada);
+        
+        console.log(checaVeiculo);
+        console.log(clienteAtivo.id)
 
-        if (checaVeiculo && checaVeiculo.idUserCadastrado !== clienteAtivo.id) {
+        if (!checaVeiculo && checaVeiculo.idUserCadastrado !== clienteAtivo.id) {
             alert("Essa placa está cadastrada para outro cliente");
             e.target.value = "";
             return;

@@ -248,6 +248,8 @@ const adicionaVeiculo = () => {
 
 };
 
+console.log(verificaUrl.id)
+
 /* --->>> TABELA DE VEICULOS DESATIVADOS <<<--- */
 
 const historicoVeiculo = () => {

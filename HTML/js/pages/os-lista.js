@@ -25,7 +25,7 @@ const renderOs = () => {
             <td class="td_cell" id="td_model">${veiculoEncontrado.modelValor}</td>
             <td class="td_cell" id="td_placa">${veiculoEncontrado.placaValor}</td>
             <td class="td_cell" id="td_status">${OsDados.status}</td>
-            <td><button class="button_table" type="button" data-id="${OsDados.id}">Delete</button></td>
+            <td><button class="button_table" type="button" data-id="${OsDados.id}">Editar</button></td>
         `;
 
         tabelaOs.appendChild(novaLinha);
@@ -48,15 +48,7 @@ if (tabelaOsGlobal) {
 
             const osId = evento.target.getAttribute("data-id");
 
-            let listaOs = loadOs();
-
-            // CORREÇÃO: Alterado o parâmetro para 'item' para evitar confusão de nomes
-            listaOs = listaOs.filter(item => item.id !== osId);
-
-            saveOs(listaOs);
-            renderOs();
-
-            alert("OS deletada com sucesso");
+            window.location.href = ("detalhes.html?id=" + osId)
         }
     });
 }
