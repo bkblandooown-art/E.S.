@@ -42,3 +42,15 @@ const idVeiculo = () => {
 
     return `VE-${letra1}${letra2}${numero}`
 };    
+
+
+const idProduto = () => {
+    const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVXWIZ"
+
+    const letra1 = alfabeto.charAt(Math.floor(Math.random() * alfabeto.length));
+    const letra2 = alfabeto.charAt(Math.floor(Math.random() * alfabeto.length));
+
+    const numero = Math.floor(100 + Math.random() * 90000000);
+
+    return `${letra1}${numero}${letra2}`
+}; 

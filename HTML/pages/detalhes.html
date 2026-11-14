@@ -114,13 +114,13 @@
             <form action="submit" id="AtualizacaoForm">
                 <div class="container-input-atualizacao">
                     <label for="titleAtualiza" class="label-title-atualiza">Tipo de procedimento</label>
-                    <input type="text" class="inputAtualizacao" placeholder="Ex: Troca de Óleo" id="titleAtualiza"
+                    <input type="text" class="inputAtualizacao" name="titulo-procedimento" placeholder="Ex: Troca de Óleo" id="titleAtualiza"
                         required>
                 </div>
                 <div class="container-input-atualizacao">
                     <label for="descricaoProcedimento" class="label-descricao-atualiza">Descrição do
                         procedimento</label>
-                    <textarea class="inputAtualizacao" placeholder="Ex: Troca de óleo da marca Yamaha e filtro"
+                    <textarea class="inputAtualizacao" name="descricao" form="AtualizacaoForm" placeholder="Ex: Troca de óleo da marca Yamaha e filtro"
                         id="descricaoProcedimento"></textarea>
                 </div>
 
@@ -131,8 +131,8 @@
                         <thead class="thead-itens">
                             <tr class="head-descricao">
                                 <th class="descricao">Descrição</th>
-                                <th class="descricao">QTD</th>
                                 <th class="descricao">Preço unitário</th>
+                                <th class="descricao">QTD</th>
                                 <th class="descricao">Preço total</th>
                                 <th class="descricao">Ações</th>
                             </tr>
@@ -141,13 +141,13 @@
                         <tbody class="tbody-itens" id="tbodyPecas">
                             <tr class="tr-inputs linha-item">
                                 <!-- IDs removidos! Usando apenas classes genéricas -->
-                                <th class="input-td nome"><input type="text" class="input-item input-nome"
-                                        placeholder="Nome do Produto"></th>
-                                <th class="input-td qtd"><input type="number" class="input-item input-qtd" value="1"
-                                        min="1"></th>
-                                <th class="input-td unt"><input type="number" class="input-item input-valor"
-                                        placeholder="0.00" step="0.01"></th>
-                                <th class="input-td preco-total"><input type="number" disabled readonly
+                                <th class="input-td nome"><input form="AtualizacaoForm" name="nomePeca" type="text"
+                                        class="input-item input-nome" placeholder="Nome do Produto"></th>
+                                <th class="input-td unt"><input form="AtualizacaoForm" name="valorPeca" type="number"
+                                        class="input-item input-valor" placeholder="0.00" step="0.01"></th>
+                                <th class="input-td qtd"><input form="AtualizacaoForm" name="qtdPeca" type="number"
+                                        class="input-item input-qtd" placeholder="0" value="1"></th>
+                                <th class="input-td preco-total"><input form="AtualizacaoForm" name="totalPeca" type="number" disabled readonly
                                         class="input-item input-total" placeholder="0.00"></th>
                                 <th class="input-td btn-remove"><button type="button" title="Remover"
                                         class="btn-remove-item remover-linha"><span class="trash-alt"><i
@@ -175,11 +175,11 @@
                         </thead>
                         <tbody class="tbody-itens" id="tbodyMo">
                             <tr class="tr-inputs linha-item">
-                                <th class="input-td nome"><input type="text" class="input-item input-nome"
+                                <th class="input-td nome"><input form="AtualizacaoForm" name="nomeServiço" type="text" class="input-item input-nome"
                                         placeholder="Descrição do serviço"></th>
-                                <th class="input-td unt"><input type="number" class="input-item input-valor"
+                                <th class="input-td unt"><input form="AtualizacaoForm" type="number" name="valorServiço" class="input-item input-valor"
                                         placeholder="0.00" step="0.01"></th>
-                                <th class="input-td preco-total"><input type="number" disabled readonly
+                                <th class="input-td preco-total"><input form="AtualizacaoForm"  name="totalServiço" type="number" disabled readonly
                                         class="input-item input-total" placeholder="0.00"></th>
                                 <th class="input-td btn-remove"><button type="button" title="Remover"
                                         class="btn-remove-item remover-linha"><span class="trash-alt"><i
@@ -282,6 +282,7 @@
     <script src="../js/services/os-database.js"></script>
     <script src="../js/services/veiculo-database.js"></script>
     <script src="../js/services/cliente-database.js"></script>
+    <script src="../js/services/produto-database.js"></script>
     <script src="file:///C:/Users/LOGAN/Downloads/ARQUIVOS%20DE%20ESTUDO/HTML/js/componentes/sidebar.js"></script>
     <script src="../js/pages/os-detalhes.js"></script>
 </body>
