@@ -18,26 +18,26 @@ console.log("id OS =", OsIdUrl);
 const carregaOSDb = loadOs();
 const baseOs = carregaOSDb.find(os => os.id === OsIdUrl)
 
-const OsStatus = () =>{
+const OsStatus = () => {
 
-console.log("Base de OS", baseOs);
-console.log("Status da OS =", baseOs.status);
+    console.log("Base de OS", baseOs);
+    console.log("Status da OS =", baseOs.status);
 
-const tituloOS = document.querySelector(".conteudo-titulo");
+    const tituloOS = document.querySelector(".conteudo-titulo");
 
-tituloOS.innerHTML='';
+    tituloOS.innerHTML = '';
 
-if (baseOs.status === "Fechado") {
-    tituloOS.innerHTML=`
+    if (baseOs.status === "Fechado") {
+        tituloOS.innerHTML = `
     <h3 class="dados-titulo" id="osidTitulo">${OsIdUrl}</h3>
     <p><span class="status-aberto fechado"><i class="bi bi-circle-fill"></i></span>${baseOs.status}</p>
 `;
-} else {
-    tituloOS.innerHTML=`
+    } else {
+        tituloOS.innerHTML = `
     <h3 class="dados-titulo" id="osidTitulo">${OsIdUrl}</h3>
     <p><span class="status-aberto"><i class="bi bi-circle-fill"></i></span>${baseOs.status}</p>
 `;
-};
+    };
 
 };
 
@@ -75,103 +75,198 @@ const preencheDados = () => {
 
 };
 
-let copiaProduto = [];
+let copiaDadosOS = carregaOSDb;
 
-const atualizaOs = () =>{
+let pecasDaOsAtual = [];
 
-    const formAtualizarOS = document.getElementById("AtualizacaoForm");
+const tablePeca = document.getElementById("tbodyPecas");
 
-    if (!formAtualizarOS) return;
+const btnAddProd = document.getElementById("btnAddPeca")
+const pecaName = document.querySelector(".input-nome");
+const pecaValor = document.querySelector(".input-valor");
+const pecaQtd = document.querySelector(".input-qtd")
+const pecaTotal = document.querySelector(".input-total")
 
-    formAtualizarOS.addEventListener("submit", (e) =>{
-        e.preventDefault();
+const addPeca = () => {
 
-        const dadosFormAtualizaOS = Object.fromEntries(new FormData(e.target));
+    tablePeca.addEventListener("input", (e) => {
+        const inputDigitado = e.target;
 
-        console.log(dadosFormAtualizaOS)
+        if (inputDigitado.classList.contains("input-valor") || inputDigitado.classList.contains("input-qtd")) {
 
-        const newProdutos = {id: idProdutos, dadosFormAtualizaOS: nomePeca, dadosFormAtualizaOS: valorPeca };
+            qtd = parseFloat(pecaQtd.value) || 0;
+            valor = parseFloat(pecaValor.value) || 0;
 
-        console.log(newProdutos);
+            const total = valor * qtd;
 
+            pecaTotal.value = total.toFixed(2);
+        };
     });
 
     
 
-};
-const tablePeca = document.getElementById("tbodyPecas")
+    btnAddProd.addEventListener("click", () => {
 
-const addProduto = () => {
+        if (pecaName.value === "") return alert("Esse campo não pode estar vazio!");
 
-    if (!tablePeca) return;
-
-    const btnAddProd = document.getElementById("btnAddPeca")
-
-    const pecaName = document.querySelector(".input-nome");
-    const pecaValor = document.querySelector(".input-valor");
-    const pecaQtd = document.querySelector(".input-qtd")
-    const pecaTotal = document.querySelector(".input-total")
-    
-    let qtd = pecaQtd.value;
-    let total = pecaTotal.value
-
-    btnAddProd.addEventListener("click", (event) =>{
-        
-        const newProdutos = {
+        const pecasDaOS = {
             id: idProduto(),
             nomePeca: pecaName.value,
-            valorPeca: pecaValor.value };
-    
-        copiaProduto.push(newProdutos)
-        
-        copiaProduto.forEach((prod) => {
+            valorPeca: pecaValor.value,
+            qtdPeca: pecaQtd.value,
+            totalPeca: pecaTotal.value,
+        };
 
-            const listaProd = document.createElement("tr");
+        pecasDaOsAtual.push(pecasDaOS);
 
-            listaProd.innerHTML = `
+        console.log(pecasDaOsAtual);
 
-             <tr class="tr-inputs linha-item">
-             <th class="input-td nome"><input disabled form="AtualizacaoForm" name="nomePeca" type="text"
-             class="input-item input-nome" value="${copiaProduto.nomePeca}"></th>
-             <th class="input-td unt"><input disabled form="AtualizacaoForm" name="valorPeca" type="number"
-             class="input-item input-valor" value="${copiaProduto.valorPeca}" step="0.01"></th>
-             <th class="input-td qtd"><input disabled form="AtualizacaoForm" name="qtdPeca" type="number"
-             class="input-item input-qtd" value="${qtd}"></th>
-             <th class="input-td preco-total"><input form="AtualizacaoForm" name="totalPeca" type="number" disabled readonly
-             class="input-item input-total" value="${total}"></th>
-             <th class="input-td btn-remove"><button type="button" data-id:"${copiaProduto.id}" title="Remover"
-             class="btn-remove-item remover-linha"><span class="trash-alt"><i
-             class="bi bi-backspace-fill"></i></span></button></th>
-             </tr>
-            `
-        });
+        renderizarTabelaDePecas()
     });
 };
 
-tablePeca.addEventListener("input", (e) => {
 
-    const inputDigitado = e.target;
 
-    if (inputDigitado.classList.contains("input-valor") || inputDigitado.classList.contains("input-qtd")){
+const renderizarTabelaDePecas = () =>{
 
-        const linhaAtual = inputDigitado.closest('tr');
+    console.log("filter.",listaPecaNova)
 
-        const inputQtd =  linhaAtual.querySelector(".input-qtd")
-        const inputValor =  linhaAtual.querySelector(".input-valor")
-        const inputTotal =  linhaAtual.querySelector(".input-total")
+    listaPecaNova.forEach(pecas => {
 
-        const qtd = parseFloat(inputQtd.value) || 0;
-        const valor = parseFloat(inputValor.value) || 0;
+        const listaProd = document.createElement("tr");
 
-        const total = valor*qtd;
+        listaProd.innerHTML = `
+         <th class="input-td nome"><input disabled form="AtualizacaoForm" name="nomePeca" type="text"
+         class="input-item input-nome" value="${pecas.nomePeca}"></th>
+         <th class="input-td unt"><input disabled form="AtualizacaoForm" name="valorPeca" type="number"
+         class="input-item input-valor" value="${pecas.valorPeca}" step="0.01"></th>
+         <th class="input-td qtd"><input disabled form="AtualizacaoForm" name="qtdPeca" type="number"
+         class="input-item input-qtd" value="${pecas.qtdPeca}"></th>
+         <th class="input-td preco-total"><input form="AtualizacaoForm" name="totalPeca" type="number" disabled readonly
+         class="input-item input-total" value="${pecas.totalPeca}"></th>
+         <th class="input-td btn-remove">
+         <button type="button" title="Remover" class="btn-remove-item remover-linha" data-id="${pecas.id}"><i class="bi bi-backspace-fill"></i></button>
+         </th>
+        `
+        tablePeca.appendChild(listaProd)
 
-        inputTotal.value = total.toFixed(2);
+        pecaName.value = "";
+        pecaValor.value = "";
+        pecaQtd.value = "1";
+        pecaTotal.value = "";
+
+        pecaName.focus()
+    });
+};
+
+const removePeca = () => {
+
+    tablePeca.addEventListener("click", (e) => {
+
+        if (e.target.classList.contains("btn-remove-item")) {
+            
+            let idBtn = e.target.getAttribute("data-id")
+
+            if (!idBtn) return
+
+            let row = e.target.closest("tr")
+
+            return row.remove()
         };
+    });
+}
 
+const descServico = document.querySelector(".input-desc-service");
+const valorServico = document.querySelector(".input-valor-service");
+const totalServico = document.querySelector(".input-total-service");
+
+const btnServico = document.getElementById("btnAddMo")
+
+const tableBodyServico = document.getElementById("tbodyMo");
+
+let service = [];
+
+const addServico = () => {
+
+    tableBodyServico.addEventListener("input", () => {
+        
+       totalServico.value = valorServico.value;
+    
     });
 
-addProduto();
-atualizaOs();
+    btnServico.addEventListener("click", () => {
+
+    service = {
+        nomeServiço: descServico.value,
+        valorServiço: valorServico.value,
+        totalServiço: totalServico.value,
+    };
+
+    if (descServico.value === "") return alert("Esse campo não pode estar vazio!");
+    
+    const listaService = document.createElement("tr")
+
+    listaService.innerHTML = `
+    <th class="input-td nome">
+    <input form="AtualizacaoForm" name="nomeServiço" type="text" class="input-item input-desc-service"
+    value="${service.nomeServiço}"></th>
+    <th class="input-td unt"><input form="AtualizacaoForm" type="number" name="valorServiço" class="input-item input-valor-service"
+    value="${service.valorServiço}" step="0.01"></th>
+    <th class="input-td preco-total"><input form="AtualizacaoForm"  name="totalServiço" type="number" disabled readonly
+    class="input-item input-total-service" value="${service.totalServiço}"></th>
+    <th class="input-td btn-remove-service"><button type="button" title="Remover"
+    class="btn-remove-item remover-linha-service" data-id="1"><span class="trash-alt"><i
+    class="bi bi-backspace-fill"></i></span></button></th>
+    `
+    tableBodyServico.appendChild(listaService);
+
+    descServico.value = "";
+    valorServico.value = "";
+    totalServico.value ="";
+
+    descServico.focus()
+    })
+
+};
+
+const removeServico = () => {
+
+    tableBodyServico.addEventListener("click", (e) => {
+
+        if (e.target.classList.contains("remover-linha-service")) {
+            
+            let idBtn = e.target.getAttribute("data-id")
+
+            if (!idBtn) return
+
+            let row = e.target.closest("tr")
+
+            return row.remove()
+        };
+    });
+}
+
+
+const formAtualizarOS = document.getElementById("AtualizacaoForm");
+
+formAtualizarOS.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const dadosFormAtualizaOS = Object.fromEntries(new FormData(e.target));
+
+    console.log(dadosFormAtualizaOS)
+
+    const newProdutos = { id: idProdutos, dadosFormAtualizaOS: nomePeca, dadosFormAtualizaOS: valorPeca };
+
+    console.log(newProdutos);
+
+});
+
+
+addServico();
+removeServico();
+removePeca();
+addPeca();
 preencheDados();
 OsStatus();
 menuLateral();
